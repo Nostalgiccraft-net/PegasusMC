@@ -15,8 +15,6 @@ steps:
       - pacman -Syu --noconfirm
       - pacman -S --noconfirm git jdk17-openjdk gradle
       - ./scripts/ci.sh
-      - cp build/libs/*.jar /artifacts/paper.jar
-      - gradle publish --stacktrace -PpegasusPassword=$PEGASUS_PASSWORD
   - name: deploy
     image: appleboy/drone-ssh
     settings:
