@@ -13,11 +13,11 @@ steps:
         from_secret: PEGASUS_PASSWORD
     commands:
       - pacman -Syu --noconfirm
-      - pacman -S --noconfirm git jdk17-openjdk
-      - ./gradlew applyPatches --stacktrace
-      - ./gradlew build --stacktrace
+      - pacman -S --noconfirm git jdk17-openjdk gradle
+      - gradle applyPatches --stacktrace
+      - gradle build --stacktrace
       - cp build/libs/*.jar /artifacts/paper.jar
-      - ./gradlew publish --stacktrace -PpegasusPassword=$PEGASUS_PASSWORD
+      - gradle publish --stacktrace -PpegasusPassword=$PEGASUS_PASSWORD
   - name: deploy
     image: appleboy/drone-ssh
     settings:
