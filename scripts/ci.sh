@@ -1,4 +1,4 @@
 gradle applyPatches --stacktrace
-gradle build --stacktrace
+gradle createMojmapBundlerJar --stacktrace
 cp build/libs/*.jar /artifacts/paper.jar
 gradle publish --stacktrace -PpegasusPassword=$1
