@@ -4,7 +4,7 @@ type: docker
 
 steps:
   - name: build
-    image: maven:3-amazoncorretto-17-debian
+    image: archlinux:base-devel
     volumes:
       - name: artifacts
         path: /artifacts
@@ -12,8 +12,8 @@ steps:
       PEGASUS_PASSWORD:
         from_secret: PEGASUS_PASSWORD
     commands:
-      - apt-get update
-      - apt-get install -y git-all
+      - pacman -Syu --noconfirm
+      - pacman -S --noconfirm git jdk17-temurin
       - ./gradlew applyPatches --stacktrace
       - ./gradlew build --stacktrace
       - cp build/libs/*.jar /artifacts/paper.jar
