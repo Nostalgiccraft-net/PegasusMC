@@ -1,0 +1,56 @@
+kind: pipeline
+name: default
+type: docker
+
+steps:
+  - name: build
+    image: maven:3-amazoncorretto-17-debian
+    volumes:
+      - name: artifacts
+        path: /artifacts
+    environment:
+      PEGASUS_PASSWORD:
+        from_secret: PEGASUS_PASSWORD
+    commands:
+      - ./gradlew applyPatches --stacktrace
+      - ./gradlew build --stacktrace
+      - cp build/libs/*.jar /artifacts/paper.jar
+      - ./gradlew publish --stacktrace -PpegasusPassword=$PEGASUS_PASSWORD
+  - name: deploy
+    image: appleboy/drone-ssh
+    settings:
+      host:
+        from_secret: SSH_HOST
+      username:
+        from_secret: SSH_USER
+      key:
+        from_secret: SSH_KEY
+      port: 22
+      command_timeout: 2m
+      script:
+        - cp artifacts/paper.jar cloud/local/templates/Global/Global-Server/
+        - cp artifacts/paper.jar cloud/local/services/GalaxyCity-1/
+        - cp artifacts/paper.jar cloud/local/services/BauServer-1/
+    when:
+      event:
+        - promote
+      target:
+        - production
+  - name: notify
+    image: curlimages/curl
+    environment:
+      webhook:
+        from_secret: WEBHOOK
+      message: ""
+    commands:
+      - MESSAGE="Deployment ${DRONE_BUILD_STATUS} on ${DRONE_REPO}/${DRONE_REPO_BRANCH}"
+      - |
+        curl -X POST -H "Content-type: application/json" --data "{\"content\": \":rocket: $MESSAGE\"}" $webhook
+    when:
+      status: [ success, failure, changed ]
+      event: [ promote ]
+
+volumes:
+  - name: artifacts
+    host:
+      path: /home/user/artifacts

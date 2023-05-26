@@ -85,7 +85,7 @@ paperweight {
 }
 
 tasks.generateDevelopmentBundle {
-    apiCoordinates.set("org.purpurmc.tentacles:tentacles-api")
+    apiCoordinates.set("net.galaxycore.pegasus:pegasus-api")
     mojangApiCoordinates.set("io.papermc.paper:paper-mojangapi")
     libraryRepositories.set(
         listOf(
@@ -96,12 +96,30 @@ tasks.generateDevelopmentBundle {
     )
 }
 
+class MyPasswordCredentials : PasswordCredentials {
+    override fun getUsername(): String {
+        return "pegasus"
+    }
+
+    override fun setUsername(userName: String?) {
+        // NO-OP
+    }
+
+    override fun getPassword(): String? {
+        return System.getenv("PEGASUS_PASSWORD")
+    }
+
+    override fun setPassword(password: String?) {
+        // NO-OP
+    }
+}
+
 allprojects {
     publishing {
         repositories {
-            maven("https://repo.purpurmc.org/snapshots") {
-                name = "tentacles"
-                credentials(PasswordCredentials::class)
+            maven("https://repo.galaxycore.net/private") { // We can't use the public repo because of copyright
+                name = "pegasus"
+                credentials(MyPasswordCredentials::class)
             }
         }
     }
