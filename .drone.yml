@@ -13,7 +13,7 @@ steps:
         from_secret: PEGASUS_PASSWORD
     commands:
       - pacman -Syu --noconfirm
-      - pacman -S --noconfirm git jdk17-temurin
+      - pacman -S --noconfirm git jdk17-openjdk
       - ./gradlew applyPatches --stacktrace
       - ./gradlew build --stacktrace
       - cp build/libs/*.jar /artifacts/paper.jar
