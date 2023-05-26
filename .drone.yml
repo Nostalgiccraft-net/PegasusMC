@@ -12,6 +12,7 @@ steps:
       PEGASUS_PASSWORD:
         from_secret: PEGASUS_PASSWORD
     commands:
+      - apt-get install -y git
       - ./gradlew applyPatches --stacktrace
       - ./gradlew build --stacktrace
       - cp build/libs/*.jar /artifacts/paper.jar
