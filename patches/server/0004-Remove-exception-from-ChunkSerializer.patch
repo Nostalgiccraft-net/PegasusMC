@@ -1,0 +1,19 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: bergschneider <magiclake@gmx.de>
+Date: Fri, 26 May 2023 13:04:34 +0200
+Subject: [PATCH] Remove exception from ChunkSerializer
+
+
+diff --git a/src/main/java/net/minecraft/world/level/chunk/storage/ChunkSerializer.java b/src/main/java/net/minecraft/world/level/chunk/storage/ChunkSerializer.java
+index 0ec80b83a99bfdb1f985045d98a81905a8a5a3ac..8a87fc034ac33c8335d10e66b43289eedd214151 100644
+--- a/src/main/java/net/minecraft/world/level/chunk/storage/ChunkSerializer.java
++++ b/src/main/java/net/minecraft/world/level/chunk/storage/ChunkSerializer.java
+@@ -260,7 +260,7 @@ public class ChunkSerializer {
+ 
+                 // Paper start - rewrite the light engine
+                 } catch (Exception ex) {
+-                    LOGGER.warn("Failed to load light data for chunk " + chunkPos + " in world '" + world.getWorld().getName() + "', light will be regenerated", ex);
++                    LOGGER.warn("Failed to load light data for chunk " + chunkPos + " in world '" + world.getWorld().getName() + "', light will be regenerated");
+                     flag = false;
+                 }
+                 // Paper end - rewrite light engine

@@ -1,0 +1,38 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: bergschneider <magiclake@gmx.de>
+Date: Fri, 26 May 2023 12:58:51 +0200
+Subject: [PATCH] add body rotation to api
+
+
+diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
+index f4a341f72d727bbffa4cfcf72eda8ed0c8945c9e..8d40159b2f263a4efe33f88d442798602230f334 100644
+--- a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
++++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
+@@ -3320,4 +3320,27 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
+         this.getHandle().connection.send(packet);
+     }
+     // Purpur end
++
++    // Pegasus start
++    @Override
++    public float getBodyRotation() {
++        return this.getHandle().yBodyRot;
++    }
++
++    @Override
++    public void setBodyRotation(float bodyRotation) {
++        this.getHandle().yBodyRot = bodyRotation;
++    }
++
++    @Override
++    public float getBodyRotationO() {
++        return this.getHandle().yBodyRotO;
++    }
++
++    @Override
++    public void setBodyRotationO(float bodyRotation) {
++        this.getHandle().yBodyRotO = bodyRotation;
++    }
++
++    // Pegasus end
+ }
