@@ -14,7 +14,7 @@ steps:
     commands:
       - pacman -Syu --noconfirm
       - pacman -S --noconfirm git jdk17-openjdk gradle
-      - ./scripts/ci.sh
+      - ./scripts/ci.sh $PEGASUS_PASSWORD
   - name: deploy
     image: appleboy/drone-ssh
     settings:
