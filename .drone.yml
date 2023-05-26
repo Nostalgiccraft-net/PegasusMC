@@ -29,7 +29,7 @@ steps:
       script:
         - cp artifacts/paper.jar cloud/local/templates/Global/Global-Server/
         - cp artifacts/paper.jar cloud/local/services/GalaxyCity-1/
-        - cp artifacts/paper.jar cloud/local/services/BauServer-1/
+        - cp artifacts/paper.jar cloud/local/services/Bauserver-1/
     when:
       event:
         - promote
