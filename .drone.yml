@@ -30,6 +30,8 @@ steps:
         - cp artifacts/paper.jar cloud/local/templates/Global/Global-Server/
         - cp artifacts/paper.jar cloud/local/services/GalaxyCity-1/
         - cp artifacts/paper.jar cloud/local/services/Bauserver-1/
+        - cp artifacts/paper.jar cloud/local/versioncache/purpur-1.19.3/paper.jar
+        - cp artifacts/paper.jar cloud/local/versioncache/purpur-1.19.3/versions/1.19.3/purpur-1.19.3.jar
     when:
       event:
         - promote
