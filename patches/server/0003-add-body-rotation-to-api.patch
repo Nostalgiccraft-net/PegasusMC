@@ -5,10 +5,10 @@ Subject: [PATCH] add body rotation to api
 
 
 diff --git a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
-index f4a341f72d727bbffa4cfcf72eda8ed0c8945c9e..8d40159b2f263a4efe33f88d442798602230f334 100644
+index 3c31701795b25b16dafe53292e9561dd0bfbe2b5..ed7f7a7f13ce057db6143adbee67ee751ebe7637 100644
 --- a/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/entity/CraftPlayer.java
-@@ -3320,4 +3320,27 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
+@@ -3298,4 +3298,27 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
          this.getHandle().connection.send(packet);
      }
      // Purpur end
