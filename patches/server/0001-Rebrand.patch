@@ -5,7 +5,7 @@ Subject: [PATCH] Rebrand
 
 
 diff --git a/build.gradle.kts b/build.gradle.kts
-index 22470f0ab8354a9f31a0f195f3fe80f2f5ee2f0e..e1e4027311db048f1e038780723bb3c7ab5ccde7 100644
+index 9c01005751c0088f560f96401cdfdebbbda4e7ec..dae651e25611662130c62003da4c0782bc11b0f0 100644
 --- a/build.gradle.kts
 +++ b/build.gradle.kts
 @@ -7,7 +7,7 @@ plugins {
@@ -61,10 +61,10 @@ index 462a6eed350fd660ddaf25d567bb6e97b77d0b2b..831f17d73c0acec1c9360f294c0761d5
          switch (distance) {
              case -1:
 diff --git a/src/main/java/org/bukkit/craftbukkit/CraftServer.java b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-index e5bac6bc792196226f975e7f3dd8f147fb14dbad..768e88e26f63c1075accf1663f2ba52ea34831af 100644
+index 3f80b16c8d69f284a26b16cf2513a955005bf458..45a6eab996be2943c163e62ac385021cee7d2eec 100644
 --- a/src/main/java/org/bukkit/craftbukkit/CraftServer.java
 +++ b/src/main/java/org/bukkit/craftbukkit/CraftServer.java
-@@ -257,7 +257,7 @@ import javax.annotation.Nullable; // Paper
+@@ -259,7 +259,7 @@ import javax.annotation.Nullable; // Paper
  import javax.annotation.Nonnull; // Paper
  
  public final class CraftServer implements Server {
