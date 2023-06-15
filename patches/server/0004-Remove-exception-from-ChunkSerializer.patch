@@ -5,10 +5,10 @@ Subject: [PATCH] Remove exception from ChunkSerializer
 
 
 diff --git a/src/main/java/net/minecraft/world/level/chunk/storage/ChunkSerializer.java b/src/main/java/net/minecraft/world/level/chunk/storage/ChunkSerializer.java
-index 0ec80b83a99bfdb1f985045d98a81905a8a5a3ac..8a87fc034ac33c8335d10e66b43289eedd214151 100644
+index 9c6a2884c34a9f6e775103da42480cd6b8c693b3..7a62658e0cbdde51be541d7836d921ea8092a163 100644
 --- a/src/main/java/net/minecraft/world/level/chunk/storage/ChunkSerializer.java
 +++ b/src/main/java/net/minecraft/world/level/chunk/storage/ChunkSerializer.java
-@@ -260,7 +260,7 @@ public class ChunkSerializer {
+@@ -255,7 +255,7 @@ public class ChunkSerializer {
  
                  // Paper start - rewrite the light engine
                  } catch (Exception ex) {
