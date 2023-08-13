@@ -5,10 +5,10 @@ Subject: [PATCH] add body rotation to api
 
 
 diff --git a/src/main/java/org/bukkit/entity/Player.java b/src/main/java/org/bukkit/entity/Player.java
-index fb99e05b4769af604f41d81f036cee3b8a6ec197..552e52c0e66ee0aec8ccb81c8ab36e72cad83686 100644
+index 2e41fad4c033de003f89ab4ab549d2bf47ad7d4f..27b677ed1dd9600c94483122a9cc68baa1181f1f 100644
 --- a/src/main/java/org/bukkit/entity/Player.java
 +++ b/src/main/java/org/bukkit/entity/Player.java
-@@ -3367,6 +3367,40 @@ public interface Player extends HumanEntity, Conversable, OfflinePlayer, PluginM
+@@ -3371,6 +3371,40 @@ public interface Player extends HumanEntity, Conversable, OfflinePlayer, PluginM
       */
      void sendDeathScreen(@NotNull net.kyori.adventure.text.Component message);
  
