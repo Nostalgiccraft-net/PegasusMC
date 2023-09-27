@@ -13,7 +13,7 @@ steps:
         from_secret: PEGASUS_PASSWORD
     commands:
       - pacman -Syu --noconfirm
-      - pacman -S --noconfirm git jdk17-openjdk gradle
+      - pacman -S --noconfirm git jdk19-openjdk gradle
       - ./scripts/ci.sh $PEGASUS_PASSWORD
   - name: deploy
     image: appleboy/drone-ssh
