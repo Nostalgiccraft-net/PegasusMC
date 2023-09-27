@@ -137,7 +137,7 @@ class MyPasswordCredentials : PasswordCredentials {
 allprojects {
     publishing {
         repositories {
-            maven("https://repo.nostalgiccraft.net.net/private") { // We can't use the public repo because of copyright
+            maven("https://repo.nostalgiccraft.net/private") { // We can't use the public repo because of copyright
                 name = "pegasus"
                 credentials(MyPasswordCredentials::class)
             }
