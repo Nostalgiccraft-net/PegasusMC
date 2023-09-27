@@ -1,0 +1,20 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: bergschneider <magiclake@gmx.de>
+Date: Wed, 27 Sep 2023 21:42:31 +0200
+Subject: [PATCH] fix build error
+
+
+diff --git a/build.gradle.kts b/build.gradle.kts
+index 9c0bcd4b9308edc64b00045325db4a8ad64915f3..7849dbc5a6b07211ef32617281672253e20ba471 100644
+--- a/build.gradle.kts
++++ b/build.gradle.kts
+@@ -226,9 +226,3 @@ val runtimeClasspathForRunDev = sourceSets.main.flatMap { src ->
+         elements.filterNot { file -> file.asFile.endsWith("minecraft.jar") }
+     }
+ }
+-tasks.registerRunTask("runDev") {
+-    description = "Spin up a non-relocated Mojang-mapped test server"
+-    classpath(tasks.filterProjectDir.flatMap { it.outputJar })
+-    classpath(runtimeClasspathForRunDev)
+-    jvmArgs("-DPaper.isRunDev=true")
+-}

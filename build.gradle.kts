@@ -4,8 +4,8 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 plugins {
     java
     `maven-publish`
-    id("com.github.johnrengelman.shadow") version "8.1.0" apply false
-    id("io.papermc.paperweight.patcher") version "1.5.3"
+    id("com.github.johnrengelman.shadow") version "8.1.1" apply false
+    id("io.papermc.paperweight.patcher") version "1.5.5"
 }
 
 allprojects {
@@ -85,7 +85,7 @@ paperweight {
 }
 
 tasks.generateDevelopmentBundle {
-    apiCoordinates.set("net.galaxycore.pegasus:pegasus-api")
+    apiCoordinates.set("org.purpurmc.tentacles:tentacles-api")
     mojangApiCoordinates.set("io.papermc.paper:paper-mojangapi")
     libraryRepositories.set(
         listOf(
@@ -94,6 +94,26 @@ tasks.generateDevelopmentBundle {
             "https://repo.purpurmc.org/snapshots",
         )
     )
+}
+
+publishing {
+    publications.create<MavenPublication>("devBundle") {
+        artifact(tasks.generateDevelopmentBundle) {
+            artifactId = "dev-bundle"
+        }
+    }
+}
+
+tasks.register("printMinecraftVersion") {
+    doLast {
+        println(providers.gradleProperty("mcVersion").get().trim())
+    }
+}
+
+tasks.register("printTentaclesVersion") {
+    doLast {
+        println(project.version)
+    }
 }
 
 class MyPasswordCredentials : PasswordCredentials {
@@ -122,25 +142,5 @@ allprojects {
                 credentials(MyPasswordCredentials::class)
             }
         }
-    }
-}
-
-publishing {
-    publications.create<MavenPublication>("devBundle") {
-        artifact(tasks.generateDevelopmentBundle) {
-            artifactId = "dev-bundle"
-        }
-    }
-}
-
-tasks.register("printMinecraftVersion") {
-    doLast {
-        println(providers.gradleProperty("mcVersion").get().trim())
-    }
-}
-
-tasks.register("printPaperVersion") {
-    doLast {
-        println(project.version)
     }
 }
