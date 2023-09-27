@@ -1,4 +1,4 @@
-gradle applyPatches --stacktrace
-gradle createReobfBundlerJar --stacktrace
+./gradlew applyPatches --stacktrace
+./gradlewgradle createReobfBundlerJar --stacktrace
 cp build/libs/*.jar /artifacts/paper.jar
-gradle publish --stacktrace -PpegasusPassword=$1
+./gradlewgradle publish --stacktrace -PpegasusPassword=$1
